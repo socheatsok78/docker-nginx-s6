@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-tags=(mainline alpine)
+tags=(latest mainline alpine)
 vers=(1.21 1.21.3 1.21-alpine 1.21.3-alpine)
 
 render() {
