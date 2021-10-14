@@ -1,5 +1,7 @@
 FROM --platform=$BUILDPLATFORM nginx:%%NGINX_VERSION%%
 
+LABEL maintainer="Socheat Sok <socheatsok78@gmail.com>"
+
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 ARG TARGETOS
