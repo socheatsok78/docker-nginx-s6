@@ -1,0 +1,7 @@
+.bin/
+.github/
+.vscode/
+docs/
+**/node_modules
+**/dist
+**/tests
