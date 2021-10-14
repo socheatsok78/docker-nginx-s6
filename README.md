@@ -1,7 +1,16 @@
-# Nginx Dockerfiles with s6-overlay
+# About
+
+Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
+
+---
 
 **Official repo**: https://github.com/nginxinc/docker-nginx  
 **Official Docker Hub**: https://hub.docker.com/_/nginx
+
+## Features
+
+- Multi-platform image
+- Use official nginx container configurations
 
 ## Image
 
@@ -54,3 +63,6 @@ $ docker run --name some-nginx -d some-content-nginx
 The usage guide are the same as the official [nginx](https://hub.docker.com/_/nginx) docker image.
 
 For s6-overlay usage guide see: https://github.com/just-containers/s6-overlay/#readme
+
+## License
+Licensed under the [MIT](LICENSE).
