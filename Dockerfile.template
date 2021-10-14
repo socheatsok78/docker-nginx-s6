@@ -1,10 +1,15 @@
-FROM nginx:%%NGINX_VERSION%%
+FROM --platform=$BUILDPLATFORM nginx:%%NGINX_VERSION%%
 
-# Add s6-overlay
-ADD https://github.com/just-containers/s6-overlay/releases/download/v2.2.0.1/s6-overlay-amd64-installer /tmp/
-RUN chmod +x /tmp/s6-overlay-amd64-installer && /tmp/s6-overlay-amd64-installer / && rm /tmp/s6-overlay-amd64-installer
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+ARG TARGETOS
+ARG TARGETARCH
+ARG TARGETVARIANT
 
 ADD rootfs /
+
+# Add s6-overlay
+RUN /s6-overlay-installer.sh $TARGETARCH
 
 ENTRYPOINT ["/init"]
 CMD ["nginx" "-g" "daemon off;"]
