@@ -7,6 +7,9 @@ DOCKER_IMAGE_BUILDER=nginx-s6-overlay
 DOCKER_IMAGE_NAME=socheatsok78/nginx-s6-overlay
 BUILDX_PLATFORM=linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
 
+# Render template
+./render.sh
+
 echo Building multi-arch docker image
 docker buildx rm ${DOCKER_IMAGE_BUILDER}-builder || true
 docker run --rm \
