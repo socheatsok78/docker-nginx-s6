@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-name="nginx-s6-overlay"
+name="nginx-s6"
 builds=`ls builds`
 
 for version in ${builds[*]}; do

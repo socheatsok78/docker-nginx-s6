@@ -5,7 +5,7 @@ Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
 ---
 ### Quick reference
 
-- Maintained by: [socheatsok78](https://github.com/socheatsok78/docker-nginx-s6-overlay)
+- Maintained by: [socheatsok78](https://github.com/socheatsok78/docker-nginx-s6)
 - Official repo: https://github.com/nginxinc/docker-nginx
 - Official Docker Hub: https://hub.docker.com/_/nginx
 
@@ -18,13 +18,13 @@ Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
 
 | Registry                                                             | Image                         |
 | -------------------------------------------------------------------- | ----------------------------- |
-| [Docker Hub](https://hub.docker.com/r/socheatsok78/nginx-s6-overlay) | socheatsok78/nginx-s6-overlay |
+| [Docker Hub](https://hub.docker.com/r/socheatsok78/nginx-s6) | socheatsok78/nginx-s6 |
 
 Following platforms for this image are available:
 
 ```
-$ docker run --rm mplatform/mquery socheatsok78/nginx-s6-overlay:latest
-Image: socheatsok78/nginx-s6-overlay:latest (digest: sha256:e4bff73f127963083cab672d37bdc40b6bbb64234c090289ad2ba0ff72a142fb)
+$ docker run --rm mplatform/mquery socheatsok78/nginx-s6:latest
+Image: socheatsok78/nginx-s6:latest (digest: sha256:e4bff73f127963083cab672d37bdc40b6bbb64234c090289ad2ba0ff72a142fb)
  * Manifest List: Yes (Image type: application/vnd.docker.distribution.manifest.list.v2+json)
  * Supported platforms:
    - linux/amd64
@@ -44,13 +44,13 @@ Image: socheatsok78/nginx-s6-overlay:latest (digest: sha256:e4bff73f127963083cab
 ## How to use this image
 
 ```sh
-$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d socheatsok78/nginx-s6-overlay
+$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d socheatsok78/nginx-s6
 ```
 
 Alternatively, a simple Dockerfile can be used to generate a new image that includes the necessary content (which is a much cleaner solution than the bind mount above):
 
 ```Dockerfile
-FROM socheatsok78/nginx-s6-overlay
+FROM socheatsok78/nginx-s6
 COPY static-html-directory /usr/share/nginx/html
 ```
 

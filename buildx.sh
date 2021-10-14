@@ -3,8 +3,8 @@ set -e
 
 builds=`ls builds`
 
-DOCKER_IMAGE_BUILDER=nginx-s6-overlay
-DOCKER_IMAGE_NAME=socheatsok78/nginx-s6-overlay
+DOCKER_IMAGE_BUILDER=nginx-s6
+DOCKER_IMAGE_NAME=socheatsok78/nginx-s6
 BUILDX_PLATFORM=linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
 
 # Render template
