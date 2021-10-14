@@ -3,9 +3,11 @@
 Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
 
 ---
+### Quick reference
 
-**Official repo**: https://github.com/nginxinc/docker-nginx  
-**Official Docker Hub**: https://hub.docker.com/_/nginx
+- Maintained by: [socheatsok78](https://github.com/socheatsok78/docker-nginx-s6-overlay)
+- Official repo: https://github.com/nginxinc/docker-nginx
+- Official Docker Hub: https://hub.docker.com/_/nginx
 
 ## Features
 
