@@ -25,6 +25,7 @@ Image: socheatsok78/nginx-s6-overlay:latest (digest: sha256:e4bff73f127963083cab
 ### Supported tags
 
 - `latest`
+- `stable`, `stable-alpine`
 - `mainline`, `1.21`, `1.21.3
 - `alpine`, `1.21-alpine`, `1.21.3-alpine`
 
