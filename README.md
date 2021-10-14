@@ -12,8 +12,8 @@
 Following platforms for this image are available:
 
 ```
-$ docker run --rm mplatform/mquery socheatsok78/nginx-s6-overlay
-Image: socheatsok78/nginx-s6-overlay:alpine (digest: sha256:42cc4266a5d69a57dea32be8f8781d2afff2eaedb3a559ba4eb2d804aa71b257)
+$ docker run --rm mplatform/mquery socheatsok78/nginx-s6-overlay:latest
+Image: socheatsok78/nginx-s6-overlay:latest (digest: sha256:e4bff73f127963083cab672d37bdc40b6bbb64234c090289ad2ba0ff72a142fb)
  * Manifest List: Yes (Image type: application/vnd.docker.distribution.manifest.list.v2+json)
  * Supported platforms:
    - linux/amd64
