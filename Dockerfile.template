@@ -12,4 +12,4 @@ ADD rootfs /
 RUN /s6-overlay-installer.sh $TARGETARCH
 
 ENTRYPOINT ["/init"]
-CMD ["nginx" "-g" "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
