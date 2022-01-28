@@ -12,15 +12,20 @@ render() {
 generate() {
   local versions=$@
   for version in ${versions[*]}; do
-    echo "Genetating nginx:$version"
-    # If exist, cleanup
+    echo " ==> Genetating nginx:$version build..."
+
+    # If exist, skip
     if [ -d "builds/$version" ]; then
-      rm -rf "builds/$version";
+      echo " ==> [Skip] Template for nginx:$version already exists!"
+      echo
+      continue;
     fi
 
     mkdir -p "builds/$version"
     # cp -r rootfs "builds/$version"
     render $version Dockerfile.template > "builds/$version/Dockerfile"
+    echo " ==> [Done] nginx:$version generated!"
+    echo
   done
 }
 
