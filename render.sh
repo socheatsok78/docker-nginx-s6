@@ -2,7 +2,7 @@
 set -e
 
 tags=(latest mainline stable alpine stable-alpine)
-vers=(1.21 1.21.3 1.21.4 1.21.5 1.21.6)
+vers=$@
 
 render() {
   sedStr="s!%%NGINX_VERSION%%!$1!g;"
