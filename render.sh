@@ -2,7 +2,7 @@
 set -e
 
 tags=(latest mainline stable alpine stable-alpine)
-vers=(1.21 1.21.3 1.21-alpine 1.21.3-alpine)
+vers=(1.21 1.21.3 1.21.4 1.21.5 1.21.6)
 
 render() {
   sedStr="s!%%NGINX_VERSION%%!$1!g;"
@@ -29,5 +29,28 @@ generate() {
   done
 }
 
+generate_alpine() {
+  local versions=$@
+  for version in ${versions[*]}; do
+    local ver=$version-alpine
+    echo " ==> Genetating nginx:$ver build..."
+
+    # If exist, skip
+    if [ -d "builds/$ver" ]; then
+      echo " ==> [Skip] Template for nginx:$ver already exists!"
+      echo
+      continue;
+    fi
+
+    mkdir -p "builds/$ver"
+    # cp -r rootfs "builds/$version"
+    render $ver Dockerfile.template > "builds/$ver/Dockerfile"
+    echo " ==> [Done] nginx:$ver generated!"
+    echo
+  done
+}
+
 generate ${tags[@]}
+
 generate ${vers[@]}
+generate_alpine ${vers[@]}
