@@ -19,10 +19,13 @@ docker buildx create \
     --use
 docker buildx inspect --bootstrap
 for version in ${builds[*]}; do
+    echo "==> Building ${DOCKER_IMAGE_NAME}:${version}"
     docker buildx build \
         --platform=${BUILDX_PLATFORM} \
         --tag ${DOCKER_IMAGE_NAME}:${version} \
         --push \
         --file "builds/$version/Dockerfile" .
+    echo "==> [Done] Successfully built ${DOCKER_IMAGE_NAME}:${version}"
+    echo
 done
 docker buildx rm ${DOCKER_IMAGE_BUILDER}-builder

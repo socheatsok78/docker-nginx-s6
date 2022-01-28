@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-tags=(latest mainline stable alpine stable-alpine)
+tags=(latest mainline stable alpine mainline-alpine stable-alpine)
 vers=$@
 
 render() {
