@@ -37,8 +37,8 @@ Image: socheatsok78/nginx-s6:latest (digest: sha256:e4bff73f127963083cab672d37bd
 
 - `latest`
 - `stable`, `stable-alpine`
-- `mainline`, `1.21`, `1.21.3`
-- `alpine`, `1.21-alpine`, `1.21.3-alpine`
+- `mainline`, `1.21`, `1.21.3`, `1.21.4`, `1.21.5`, `1.21.6`
+- `alpine`, `1.21-alpine`, `1.21.3-alpine`, `1.21.4-alpine`, `1.21.5-alpine`, `1.21.6-alpine`
 
 
 ## How to use this image
