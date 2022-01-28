@@ -18,7 +18,6 @@ docker run --rm \
 docker buildx create \
     --name ${DOCKER_IMAGE_BUILDER}-builder \
     --driver docker-container \
-    --driver-opt image=moby/buildkit:v0.8-beta,network=host \
     --buildkitd-flags '--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host' \
     --use
 docker buildx inspect --bootstrap
