@@ -18,7 +18,7 @@ docker buildx create \
     --buildkitd-flags '--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host' \
     --use
 docker buildx inspect --bootstrap
-for version in ${builds[*]}; do
+for version in ${builds[@]}; do
     echo "==> Building ${DOCKER_IMAGE_NAME}:${version}"
     docker buildx build \
         --platform=${BUILDX_PLATFORM} \
