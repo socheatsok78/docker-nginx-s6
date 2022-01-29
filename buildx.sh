@@ -1,7 +1,8 @@
 #!/bin/sh
 set -e
 
-builds=($(ls builds))
+dirs=`ls builds`
+builds=($dirs)
 
 DOCKER_IMAGE_BUILDER=nginx-s6
 DOCKER_IMAGE_NAME=socheatsok78/nginx-s6
