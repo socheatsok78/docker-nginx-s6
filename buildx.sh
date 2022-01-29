@@ -21,11 +21,13 @@ docker buildx create \
 docker buildx inspect --bootstrap
 for version in "${builds[@]}"; do
     echo "==> Building ${DOCKER_IMAGE_NAME}:${version}"
+    echo "[+] [context] builds/$version"
     docker buildx build \
         --platform=${BUILDX_PLATFORM} \
         --tag ${DOCKER_IMAGE_NAME}:${version} \
         --push \
-        --file "builds/$version/Dockerfile" .
+        --file "builds/$version/Dockerfile" \
+        "builds/$version"
     echo "==> [Done] Successfully built ${DOCKER_IMAGE_NAME}:${version}"
     echo
 done
