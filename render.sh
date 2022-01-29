@@ -22,7 +22,7 @@ generate() {
     fi
 
     mkdir -p "builds/$version"
-    # cp -r rootfs "builds/$version"
+    cp -r rootfs "builds/$version"
     render $version Dockerfile.template > "builds/$version/Dockerfile"
     echo " ==> [Done] nginx:$version generated!"
     echo
