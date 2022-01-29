@@ -43,7 +43,7 @@ generate_alpine() {
     fi
 
     mkdir -p "builds/$ver"
-    cp -r rootfs "builds/$version"
+    cp -r rootfs "builds/$ver"
     render $ver Dockerfile.template > "builds/$ver/Dockerfile"
     echo " ==> [Done] nginx:$ver generated!"
     echo
