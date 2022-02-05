@@ -6,7 +6,7 @@ builds=($dirs)
 
 DOCKER_IMAGE_BUILDER=nginx-s6
 DOCKER_IMAGE_NAME=socheatsok78/nginx-s6
-BUILDX_PLATFORM=linux/amd64,linux/arm64
+BUILDX_PLATFORM=linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
 
 echo Building multi-arch docker image
 docker buildx rm ${DOCKER_IMAGE_BUILDER}-builder || true
