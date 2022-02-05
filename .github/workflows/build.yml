@@ -8,13 +8,6 @@ on:
     # https://crontab.guru/#40_10_*_*_*
     - cron: '40 10 * * *'
 
-env:
-  # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  # IMAGE_NAME: ${{ github.repository }}
-  IMAGE_NAME: soramitsukhmer/nginx-fe
-
 permissions:
   contents: read
   packages: write
@@ -27,7 +20,7 @@ jobs:
       uses: actions/checkout@v2
     # Login against a Docker registry except on PR
     # https://github.com/docker/login-action
-    - name: Log into registry ${{ env.REGISTRY }}
+    - name: Log into registry
       if: github.event_name != 'pull_request'
       uses: docker/login-action@v1
       with:
