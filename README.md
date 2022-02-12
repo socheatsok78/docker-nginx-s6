@@ -2,6 +2,8 @@
 
 Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
 
+![docker-pull](https://img.shields.io/docker/pulls/socheatsok78/nginx-s6) 
+
 ---
 ### Quick reference
 
