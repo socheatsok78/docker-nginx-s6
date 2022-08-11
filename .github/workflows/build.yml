@@ -14,7 +14,7 @@ permissions:
 
 env:
   # github.repository as <account>/<repo>
-  IMAGE_NAME: nginx-s6
+  IMAGE_NAME: socheatsok78/nginx-s6
 
 jobs:
   build-canonicals:
