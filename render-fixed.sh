@@ -1,11 +1,29 @@
 #!/bin/bash
 set -e
 
-supported_versions=(
+# v1.21
+version_1_21=(
   "1.21.3"
   "1.21.4"
   "1.21.5"
   "1.21.6"
+)
+
+# v1.22
+version_1_22=(
+  "1.22.0"
+)
+
+# v1.23
+version_1_23=(
+  "1.23.0"
+  "1.23.1"
+)
+
+supported_versions=(
+  "${version_1_21[@]}"
+  "${version_1_22[@]}"
+  "${version_1_23[@]}"
 )
 
 S6_OVERLAY_VERSION=v3.1.1.2
@@ -16,11 +34,11 @@ render() {
 }
 
 render_readme() {
-    sedStr=""
-    sedStr+="s!%%NGINX_VERSION%%!$1!g;"
-    sedStr+="s!%%S6_OVERLAY_VERSION%%!$2!g;"
+  sedStr=""
+  sedStr+="s!%%NGINX_VERSION%%!$1!g;"
+  sedStr+="s!%%S6_OVERLAY_VERSION%%!$2!g;"
 
-    sed -r "$sedStr" README.template.md
+  sed -r "$sedStr" README.template.md
 }
 
 generate() {
@@ -32,7 +50,7 @@ generate() {
     echo
     echo " ==> Genetating nginx:${version} build..."
 
-    If exist, skip
+    # If exist, skip
     if [ -d "$context" ]; then
       echo " ==> [Skip] Template for nginx:${version} already exists!"
       continue;
@@ -40,9 +58,14 @@ generate() {
 
     mkdir -p "$context"
     cp -r rootfs "$context"
-    render_readme "${version}" "${S6_OVERLAY_VERSION}"
-    render ${version} Dockerfile.template > "$context/Dockerfile"
-    echo " ==> [Done] nginx:${version} generated!"
+
+    echo " [+] Generating Dockerfile"
+    render_readme "${version}" "${S6_OVERLAY_VERSION}" > "$context/README.md"
+
+    echo " [+] Generating README.md"
+    render ${version} > "$context/Dockerfile"
+
+    echo " [+] [Done] nginx:${version} generated!"
   done
 }
 
@@ -53,7 +76,7 @@ generate_alpine() {
     local context="versions/fixed/$ver"
     echo " ==> Genetating nginx:$ver build..."
 
-    If exist, skip
+    # If exist, skip
     if [ -d "$context" ]; then
       echo " ==> [Skip] Template for nginx:$ver already exists!"
       echo
@@ -62,9 +85,14 @@ generate_alpine() {
 
     mkdir -p "$context"
     cp -r rootfs "$context"
-    render_readme "$ver" "${S6_OVERLAY_VERSION}"
-    render $ver Dockerfile.template > "$context/Dockerfile"
-    echo " ==> [Done] nginx:$ver generated!"
+
+    echo " [+] Generating Dockerfile"
+    render_readme "$ver" "${S6_OVERLAY_VERSION}" > "$context/README.md"
+
+    echo " [+] Generating README.md"
+    render $ver > "$context/Dockerfile"
+
+    echo " [+] [Done] nginx:$ver generated!"
     echo
   done
 }
