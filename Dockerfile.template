@@ -22,7 +22,8 @@ ENV S6_OVERLAY_VERSION=%%S6_OVERLAY_VERSION%%
 ADD rootfs /
 
 # Add s6-overlay
-RUN /s6-overlay-installer.sh $TARGETARCH
+RUN /s6-overlay-installer.sh $TARGETARCH && \
+    rm /s6-overlay-installer.sh
 
 ENTRYPOINT ["/init"]
 CMD ["nginx", "-g", "daemon off;"]
