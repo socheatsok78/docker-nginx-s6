@@ -3,8 +3,8 @@ set -e
 
 tags=(latest mainline stable alpine mainline-alpine stable-alpine)
 version_tags=(
-  "1.21"
-  "1.21-alpine"
+  # "1.21"
+  # "1.21-alpine"
   "1.22"
   "1.22-alpine"
   "1.23"
