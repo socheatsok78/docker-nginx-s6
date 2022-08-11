@@ -19,9 +19,10 @@ Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
 
 ## Image
 
-| Registry                                                     | Image                 |
-| ------------------------------------------------------------ | --------------------- |
-| [Docker Hub](https://hub.docker.com/r/socheatsok78/nginx-s6) | socheatsok78/nginx-s6 |
+| Registry                                                                                           | Image                           |
+| -------------------------------------------------------------------------------------------------- | ------------------------------- |
+| [Docker Hub](https://hub.docker.com/r/socheatsok78/nginx-s6)                                       | docker.io/socheatsok78/nginx-s6 |
+| [GitHub Package Registry](https://github.com/socheatsok78/docker-nginx-s6/pkgs/container/nginx-s6) | ghcr.io/socheatsok78/nginx-s6   |
 
 Following platforms for this image are available:
 
