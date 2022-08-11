@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-tags=(latest mainline stable alpine mainline-alpine stable-alpine)
 vers=$@
 
 render() {
@@ -11,21 +10,23 @@ render() {
 
 generate() {
   local versions=$@
+  echo "Rendering fixed builds..."
+
   for version in ${versions[*]}; do
+    local context="versions/fixed/$version"
+    echo
     echo " ==> Genetating nginx:$version build..."
 
     # If exist, skip
-    if [ -d "builds/$version" ]; then
+    if [ -d "$context" ]; then
       echo " ==> [Skip] Template for nginx:$version already exists!"
-      echo
       continue;
     fi
 
-    mkdir -p "builds/$version"
-    cp -r rootfs "builds/$version"
-    render $version Dockerfile.template > "builds/$version/Dockerfile"
+    mkdir -p "$context"
+    cp -r rootfs "$context"
+    render $version Dockerfile.template > "$context/Dockerfile"
     echo " ==> [Done] nginx:$version generated!"
-    echo
   done
 }
 
@@ -33,24 +34,29 @@ generate_alpine() {
   local versions=$@
   for version in ${versions[*]}; do
     local ver=$version-alpine
+    local context="versions/fixed/$ver"
     echo " ==> Genetating nginx:$ver build..."
 
     # If exist, skip
-    if [ -d "builds/$ver" ]; then
+    if [ -d "$context" ]; then
       echo " ==> [Skip] Template for nginx:$ver already exists!"
       echo
       continue;
     fi
 
-    mkdir -p "builds/$ver"
-    cp -r rootfs "builds/$ver"
-    render $ver Dockerfile.template > "builds/$ver/Dockerfile"
+    mkdir -p "$context"
+    cp -r rootfs "$context"
+    render $ver Dockerfile.template > "$context/Dockerfile"
     echo " ==> [Done] nginx:$ver generated!"
     echo
   done
 }
 
-generate ${tags[@]}
+if [[ -z "${vers[@]}" ]]; then
+    echo "Please specify versions to render."
+    exit 1
+fi
+
 
 generate ${vers[@]}
 generate_alpine ${vers[@]}
