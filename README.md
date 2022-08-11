@@ -2,9 +2,10 @@
 
 Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
 
-![docker-pull](https://img.shields.io/docker/pulls/socheatsok78/nginx-s6) 
+[![docker-pull](https://img.shields.io/docker/pulls/socheatsok78/nginx-s6)](https://hub.docker.com/r/socheatsok78/nginx-s6)
 
 ---
+
 ### Quick reference
 
 - Maintained by: [socheatsok78](https://github.com/socheatsok78/docker-nginx-s6)
@@ -18,8 +19,8 @@ Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
 
 ## Image
 
-| Registry                                                             | Image                         |
-| -------------------------------------------------------------------- | ----------------------------- |
+| Registry                                                     | Image                 |
+| ------------------------------------------------------------ | --------------------- |
 | [Docker Hub](https://hub.docker.com/r/socheatsok78/nginx-s6) | socheatsok78/nginx-s6 |
 
 Following platforms for this image are available:
@@ -41,7 +42,6 @@ Image: socheatsok78/nginx-s6:latest (digest: sha256:e4bff73f127963083cab672d37bd
 - `stable`, `stable-alpine`
 - `mainline`, `1.21`, `1.21.3`, `1.21.4`, `1.21.5`, `1.21.6`
 - `alpine`, `1.21-alpine`, `1.21.3-alpine`, `1.21.4-alpine`, `1.21.5-alpine`, `1.21.6-alpine`
-
 
 ## How to use this image
 
@@ -69,4 +69,5 @@ The usage guide are the same as the official [nginx](https://hub.docker.com/_/ng
 For s6-overlay usage guide see: https://github.com/just-containers/s6-overlay/#readme
 
 ## License
+
 Licensed under the [MIT](LICENSE).
