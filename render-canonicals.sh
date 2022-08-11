@@ -2,9 +2,22 @@
 set -e
 
 tags=(latest mainline stable alpine mainline-alpine stable-alpine)
-force=false
+version_tags=(
+  "1.21"
+  "1.21-alpine"
+  "1.22"
+  "1.22-alpine"
+  "1.23"
+  "1.23-alpine"
+)
+
+supported_versions=(
+  "${tags[@]}"
+  "${version_tags[@]}"
+)
 
 S6_OVERLAY_VERSION=v3.1.1.2
+force=false
 
 render() {
   sedStr="s!%%NGINX_VERSION%%!$1!g;"
@@ -43,9 +56,14 @@ generate() {
 
     mkdir -p "$context"
     cp -r rootfs "$context"
-    render $version > "$context/Dockerfile"
-    render_readme $version $S6_OVERLAY_VERSION
-    echo " ==> [Done] nginx:$version generated!"
+
+    echo " [+] Generating Dockerfile"
+    render_readme "${version}" "${S6_OVERLAY_VERSION}" > "$context/README.md"
+
+    echo " [+] Generating README.md"
+    render ${version} > "$context/Dockerfile"
+
+    echo " [+] [Done] nginx:$version generated!"
   done
 }
 
@@ -54,4 +72,4 @@ if [[ "${1}" == "--force" ]]; then
   shift
 fi
 
-generate ${tags[@]}
+generate ${supported_versions[@]}
