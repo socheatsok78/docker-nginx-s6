@@ -12,12 +12,31 @@ permissions:
   contents: read
   packages: write
 
+env:
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: nginx-s6
+
 jobs:
-  build:
+  build-canonicals:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version:
+          - "1.21"
+          - "1.21-alpine"
+          - "alpine"
+          - "latest"
+          - "mainline"
+          - "mainline-alpine"
+          - "stable"
+          - "stable-alpine"
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
     # Login against a Docker registry except on PR
     # https://github.com/docker/login-action
     - name: Log into registry
@@ -26,7 +45,66 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build, Tag and Push Image
-      run: |
-        chmod +x ./buildx.sh
-        ./buildx.sh
+    # Login against a GitHub Docker registry except on PR
+    # https://github.com/docker/login-action
+    - name: Log into registry
+      if: github.event_name != 'pull_request'
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: "versions/canonicals/${{ matrix.version }}"
+        push: true
+        tags: |
+          "docker.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
+          "ghcr.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
+  build-fixed:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version:
+          - "1.21.3"
+          - "1.21.3-alpine"
+          - "1.21.4"
+          - "1.21.4-alpine"
+          - "1.21.5"
+          - "1.21.5-alpine"
+          - "1.21.6"
+          - "1.21.6-alpine"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    # Login against a Docker registry except on PR
+    # https://github.com/docker/login-action
+    - name: Log into registry
+      if: github.event_name != 'pull_request'
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    # Login against a GitHub Docker registry except on PR
+    # https://github.com/docker/login-action
+    - name: Log into registry
+      if: github.event_name != 'pull_request'
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: "versions/canonicals/${{ matrix.version }}"
+        push: true
+        tags: |
+          "docker.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
+          "ghcr.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
