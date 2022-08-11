@@ -15,6 +15,7 @@ permissions:
 env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: socheatsok78/nginx-s6
+  IMAGE_PLATFORMS: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
 
 jobs:
   build-canonicals:
@@ -63,6 +64,7 @@ jobs:
       with:
         context: "versions/canonicals/${{ matrix.version }}"
         push: true
+        platforms: ${{ env.IMAGE_PLATFORMS }}
         tags: |
           "docker.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
           "ghcr.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
@@ -112,6 +114,7 @@ jobs:
       with:
         context: "versions/fixed/${{ matrix.version }}"
         push: true
+        platforms: ${{ env.IMAGE_PLATFORMS }}
         tags: |
           "docker.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
           "ghcr.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
