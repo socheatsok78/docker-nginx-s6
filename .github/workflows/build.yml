@@ -63,6 +63,7 @@ jobs:
         tags: |
           "docker.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
           "ghcr.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
+
   build-fixed:
     runs-on: ubuntu-latest
     strategy:
@@ -103,7 +104,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
-        context: "versions/canonicals/${{ matrix.version }}"
+        context: "versions/fixed/${{ matrix.version }}"
         push: true
         tags: |
           "docker.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}"
