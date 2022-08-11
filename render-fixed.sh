@@ -29,7 +29,10 @@ supported_versions=(
 S6_OVERLAY_VERSION=v3.1.1.2
 
 render() {
-  sedStr="s!%%NGINX_VERSION%%!$1!g;"
+  sedStr=""
+  sedStr+="s!%%NGINX_VERSION%%!$1!g;"
+  sedStr+="s!%%S6_OVERLAY_VERSION%%!$2!g;"
+
   sed -r "$sedStr" Dockerfile.template
 }
 
@@ -90,7 +93,7 @@ generate_alpine() {
     render_readme "$ver" "${S6_OVERLAY_VERSION}" > "$context/README.md"
 
     echo " [+] Generating README.md"
-    render $ver > "$context/Dockerfile"
+    render "$ver" "${S6_OVERLAY_VERSION}" > "$context/Dockerfile"
 
     echo " [+] [Done] nginx:$ver generated!"
     echo
