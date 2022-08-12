@@ -16,13 +16,14 @@ ARG TARGETOS
 ARG TARGETARCH
 ARG TARGETVARIANT
 
-ENV NGINX_VERSION=1.21.5-alpine
+ENV S6_NGINX_VERSION=1.21.5-alpine
 ENV S6_OVERLAY_VERSION=v2.2.0.1
 
 ADD rootfs /
 
 # Add s6-overlay
-RUN /s6-overlay-installer.sh $TARGETARCH
+RUN /s6-overlay-installer.sh $TARGETARCH && \
+    rm /s6-overlay-installer.sh
 
 ENTRYPOINT ["/init"]
 CMD ["nginx", "-g", "daemon off;"]
