@@ -6,7 +6,7 @@ Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
 
 ## Features
 
-- Nginx: %%NGINX_VERSION%%
+- Nginx: %%S6_NGINX_VERSION%%
 - S6 Overlay: %%S6_OVERLAY_VERSION%%
 - Multi-platform image
 - Use official nginx container configurations
@@ -15,19 +15,19 @@ Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
 
 | Registry                                                                                           | Image                                             |
 | -------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| [Docker Hub](https://hub.docker.com/r/socheatsok78/nginx-s6)                                       | docker.io/socheatsok78/nginx-s6:%%NGINX_VERSION%% |
-| [GitHub Package Registry](https://github.com/socheatsok78/docker-nginx-s6/pkgs/container/nginx-s6) | ghcr.io/socheatsok78/nginx-s6:%%NGINX_VERSION%%   |
+| [Docker Hub](https://hub.docker.com/r/socheatsok78/nginx-s6)                                       | docker.io/socheatsok78/nginx-s6:%%S6_NGINX_VERSION%% |
+| [GitHub Package Registry](https://github.com/socheatsok78/docker-nginx-s6/pkgs/container/nginx-s6) | ghcr.io/socheatsok78/nginx-s6:%%S6_NGINX_VERSION%%   |
 
 ## How to use this image
 
 ```sh
-$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d socheatsok78/nginx-s6:%%NGINX_VERSION%%
+$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d socheatsok78/nginx-s6:%%S6_NGINX_VERSION%%
 ```
 
 Alternatively, a simple Dockerfile can be used to generate a new image that includes the necessary content (which is a much cleaner solution than the bind mount above):
 
 ```Dockerfile
-FROM socheatsok78/nginx-s6:%%NGINX_VERSION%%
+FROM socheatsok78/nginx-s6:%%S6_NGINX_VERSION%%
 COPY static-html-directory /usr/share/nginx/html
 ```
 

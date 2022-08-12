@@ -1,13 +1,13 @@
-FROM --platform=$BUILDPLATFORM nginx:%%NGINX_VERSION%%
+FROM --platform=$BUILDPLATFORM nginx:%%S6_NGINX_VERSION%%
 
 LABEL "org.opencontainers.image.title"="nginx-s6"
 LABEL "org.opencontainers.image.description"="Nginx with s6-overlay"
 LABEL "org.opencontainers.image.url"="https://github.com/socheatsok78/docker-nginx-s6"
 LABEL "org.opencontainers.image.source"="https://github.com/socheatsok78/docker-nginx-s6"
-LABEL "org.opencontainers.image.version"="%%NGINX_VERSION%%"
+LABEL "org.opencontainers.image.version"="%%S6_NGINX_VERSION%%"
 LABEL "org.opencontainers.image.licenses"="MIT"
 
-LABEL version="%%NGINX_VERSION%%"
+LABEL version="%%S6_NGINX_VERSION%%"
 LABEL maintainer="Socheat Sok <socheatsok78@gmail.com>"
 
 ARG TARGETPLATFORM
@@ -16,7 +16,7 @@ ARG TARGETOS
 ARG TARGETARCH
 ARG TARGETVARIANT
 
-ENV NGINX_VERSION=%%NGINX_VERSION%%
+ENV S6_NGINX_VERSION=%%S6_NGINX_VERSION%%
 ENV S6_OVERLAY_VERSION=%%S6_OVERLAY_VERSION%%
 
 ADD rootfs /
