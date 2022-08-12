@@ -7,6 +7,7 @@ LABEL "org.opencontainers.image.source"="https://github.com/socheatsok78/docker-
 LABEL "org.opencontainers.image.version"="1.21"
 LABEL "org.opencontainers.image.licenses"="MIT"
 
+LABEL version="1.21"
 LABEL maintainer="Socheat Sok <socheatsok78@gmail.com>"
 
 ARG TARGETPLATFORM
@@ -15,10 +16,14 @@ ARG TARGETOS
 ARG TARGETARCH
 ARG TARGETVARIANT
 
+ENV S6_NGINX_VERSION=1.21
+ENV S6_OVERLAY_VERSION=v2.2.0.1
+
 ADD rootfs /
 
 # Add s6-overlay
-RUN /s6-overlay-installer.sh $TARGETARCH
+RUN /s6-overlay-installer.sh $TARGETARCH && \
+    rm /s6-overlay-installer.sh
 
 ENTRYPOINT ["/init"]
 CMD ["nginx", "-g", "daemon off;"]
