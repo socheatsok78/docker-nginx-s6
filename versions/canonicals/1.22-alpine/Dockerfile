@@ -20,6 +20,7 @@ ENV S6_NGINX_VERSION=1.22-alpine
 ENV S6_OVERLAY_VERSION=v3.1.1.2
 
 ADD rootfs /
+RUN chmod +x /etc/cont-init.d/00-nginx-init.sh
 
 # Add s6-overlay
 RUN /s6-overlay-installer.sh $TARGETARCH && \
