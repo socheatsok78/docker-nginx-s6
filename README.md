@@ -39,10 +39,20 @@ Image: socheatsok78/nginx-s6:latest (digest: sha256:e4bff73f127963083cab672d37bd
 
 ### Supported tags
 
-- `latest`
+- `latest`, `mainline`, `alpine`
 - `stable`, `stable-alpine`
-- `mainline`, `1.21`, `1.21.3`, `1.21.4`, `1.21.5`, `1.21.6`
-- `alpine`, `1.21-alpine`, `1.21.3-alpine`, `1.21.4-alpine`, `1.21.5-alpine`, `1.21.6-alpine`
+
+**v1.21**
+- `1.21`, `1.21.3`, `1.21.4`, `1.21.5`, `1.21.6`
+- `1.21-alpine`, `1.21.3-alpine`, `1.21.4-alpine`, `1.21.5-alpine`, `1.21.6-alpine`
+
+**v1.22**
+- `1.22`, `1.22.0`
+- `1.22-alpine`, `1.22.0-alpine`
+
+**v1.23**
+- `1.23`, `1.23.0`, `1.23.1`
+- `1.23-alpine`, `1.23.0-alpine`, `1.23.1-alpine`
 
 ## How to use this image
 
