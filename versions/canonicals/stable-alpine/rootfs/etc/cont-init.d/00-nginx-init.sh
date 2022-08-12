@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv sh
+#!/command/with-contenv sh
 
 # See https://github.com/nginxinc/docker-nginx/blob/master/entrypoint/docker-entrypoint.sh
 
