@@ -21,18 +21,18 @@ force=false
 
 render() {
   sedStr=""
-  sedStr+="s!%%NGINX_VERSION%%!$1!g;"
+  sedStr+="s!%%S6_NGINX_VERSION%%!$1!g;"
   sedStr+="s!%%S6_OVERLAY_VERSION%%!$2!g;"
 
   sed -r "$sedStr" Dockerfile.template
 }
 
 render_readme() {
-    sedStr=""
-    sedStr+="s!%%NGINX_VERSION%%!$1!g;"
-    sedStr+="s!%%S6_OVERLAY_VERSION%%!$2!g;"
+  sedStr=""
+  sedStr+="s!%%S6_NGINX_VERSION%%!$1!g;"
+  sedStr+="s!%%S6_OVERLAY_VERSION%%!$2!g;"
 
-    sed -r "$sedStr" README.template.md
+  sed -r "$sedStr" README.template.md
 }
 
 generate() {
