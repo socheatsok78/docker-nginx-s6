@@ -1,3 +1,6 @@
+### :warning::warning: Warning :warning::warning:
+#### You can build your own `nginx` with `s6-overlay` using this module [s6-overlay-nginx-module](https://github.com/socheatsok78/s6-overlay-nginx-module).  I recommended that you build your own image instead of using this custom image. But I will continue to support this custom release for quite some time until it is no longer being used.
+
 # About
 
 Nginx with [s6-overlay](https://github.com/just-containers/s6-overlay).
